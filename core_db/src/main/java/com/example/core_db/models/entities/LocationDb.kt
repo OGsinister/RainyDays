@@ -8,9 +8,14 @@ import androidx.room.PrimaryKey
     tableName = "Location",
     indices = [Index("id")]
 )
-data class Location(
+data class LocationDb(
     @PrimaryKey(autoGenerate = true) val id: Int,
     val cityName: String,
+    val icon: String,
+    val conditionText: String,
+    val feelsLikeTemp: Double,
     val temperature: Double,
-    val icon: String
+    val wind: Double,
+    val humidity: Int,
+    val cloud: Int,
 )

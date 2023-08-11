@@ -1,6 +1,7 @@
 package com.example.core_data.model
 
 data class Location(
+    val id: Int,
     val cityName: String,
     val icon: String,
     val conditionText: String,

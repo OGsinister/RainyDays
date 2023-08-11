@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.example.core_db.AppDatabase
 import com.example.core_db.Constants
+import com.example.core_db.models.dao.LocationDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,5 +22,11 @@ object DatabaseModule {
             klass = AppDatabase::class.java,
             name = Constants.DATABASE_NAME
         ).build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideDao(db: AppDatabase): LocationDao{
+        return db.locationDao
     }
 }

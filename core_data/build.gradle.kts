@@ -37,6 +37,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
 
     implementation(project(":core_network"))
+    implementation(project(":core_db"))
 
     // @Inject
     implementation("javax.inject:javax.inject:1")
