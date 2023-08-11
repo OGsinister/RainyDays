@@ -1,7 +1,10 @@
 package com.example.rainydays.di
 
-import com.example.core_network.WeatherApi
+import com.example.core_data.repository.WeatherRepository
 import com.example.core_network.Constants
+import com.example.core_network.WeatherApi
+import dagger.Binds
+import dagger.Component
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,12 +20,11 @@ import javax.inject.Singleton
 object NetworkModule {
     @Provides
     @Singleton
-    fun provideRetrofit(): WeatherApi =
+    fun provideRetrofit() =
         Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(WeatherApi::class.java)
 
     @Provides
     @Singleton

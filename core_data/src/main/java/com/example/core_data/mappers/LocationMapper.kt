@@ -10,5 +10,6 @@ fun CurrentWeather.toLocation() = Location(
     temperature = current.temperature,
     wind = current.wind,
     humidity = current.humidity,
-    cloud = current.cloud
+    cloud = current.cloud,
+    icon = current.condition.icon
 )

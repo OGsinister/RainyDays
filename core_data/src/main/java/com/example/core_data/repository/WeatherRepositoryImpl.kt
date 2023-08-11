@@ -1,19 +1,17 @@
 package com.example.core_data.repository
 
+import com.example.core_data.mappers.toLocation
+import com.example.core_data.model.Location
 import com.example.core_network.WeatherApi
-import com.example.core_network.model.current.CurrentWeather
-import com.example.core_network.model.forecast.ForecastWeather
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class WeatherRepositoryImpl @Inject constructor(
     private val weatherApi: WeatherApi
-): WeatherApi{
-    override suspend fun getCurrentWeatherByLocation(city: String): CurrentWeather {
-        return weatherApi.getCurrentWeatherByLocation(city)
+): WeatherRepository{
+    override suspend fun getCurrentWeatherByLocation(city: String): Location {
+        val locations = weatherApi.getCurrentWeatherByLocation(city)
+        return locations.toLocation()
     }
-
-    override suspend fun getForecastWeatherByLocation(city: String): ForecastWeather {
-        TODO("Not yet implemented")
-    }
-
 }
