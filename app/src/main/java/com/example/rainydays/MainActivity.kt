@@ -24,9 +24,7 @@ class MainActivity : ComponentActivity() {
                 Column(
                     modifier = Modifier.fillMaxSize()
                 ){
-                    Text(text = viewModel.temperature.value.toString())
-                    Text(text = viewModel.conditionText.value)
-                    Text(text = viewModel.cityName.value)
+
                 }
             }
         }

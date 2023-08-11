@@ -8,7 +8,8 @@ import javax.inject.Singleton
 
 @Singleton
 class WeatherRepositoryImpl @Inject constructor(
-    private val weatherApi: WeatherApi
+    private val weatherApi: WeatherApi,
+    // private val weatherDb...
 ): WeatherRepository{
     override suspend fun getCurrentWeatherByLocation(city: String): Location {
         val locations = weatherApi.getCurrentWeatherByLocation(city)

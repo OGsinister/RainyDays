@@ -1,5 +1,7 @@
 package com.example.rainydays.ui.main_screen
 
+import android.util.Log
+import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -18,16 +20,8 @@ class MainViewModel @Inject constructor(
     private val repository: WeatherRepositoryImpl
 ): ViewModel() {
 
-    val temperature = mutableStateOf<Double>(3.0)
-    val cityName = mutableStateOf("")
-    val conditionText = mutableStateOf("")
-
     fun showWeather(city: String){
         viewModelScope.launch(Dispatchers.IO) {
-            val location = repository.getCurrentWeatherByLocation(city)
-            temperature.value = location.temperature
-            cityName.value = location.cityName
-            conditionText.value = location.conditionText
             getWeatherUseCase.execute(city)
         }
     }
