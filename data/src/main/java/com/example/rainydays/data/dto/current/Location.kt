@@ -1,10 +1,16 @@
 package com.example.rainydays.data.dto.current
 
+import com.google.gson.annotations.SerializedName
+
 data class Location(
+    @SerializedName("county")
     val country: String,
-    val lat: Double,
-    val localtime: String,
-    val localtime_epoch: Int,
-    val lon: Double,
-    val name: String,
+    @SerializedName("lat")
+    val latitude: Double,
+    @SerializedName("localtime")
+    val localTime: String,
+    @SerializedName("lon")
+    val longitude: Double,
+    @SerializedName("name")
+    val city: String,
 )
