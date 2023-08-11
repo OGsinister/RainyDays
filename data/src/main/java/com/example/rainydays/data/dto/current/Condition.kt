@@ -1,4 +1,4 @@
-package com.example.rainydays.domain.model.forecast
+package com.example.rainydays.data.dto.current
 
 data class Condition(
     val code: Int,

@@ -1,6 +1,10 @@
 package com.example.rainydays.domain.model.current
 
 data class CurrentWeather(
-    val current: Current,
-    val location: Location
+    val city: String,
+    val icon: String,
+    val conditionText: String,
+    val wind: String,
+    val humidity: String,
+    val cloud: Int
 )

@@ -1,4 +1,4 @@
-package com.example.rainydays.domain.model.forecast
+package com.example.rainydays.data.dto.forecast
 
 data class Day(
     val avghumidity: Double,

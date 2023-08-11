@@ -1,4 +1,4 @@
-package com.example.rainydays.domain.model.forecast
+package com.example.rainydays.data.dto.current
 
 data class Location(
     val country: String,
@@ -7,6 +7,4 @@ data class Location(
     val localtime_epoch: Int,
     val lon: Double,
     val name: String,
-    val region: String,
-    val tz_id: String
 )
