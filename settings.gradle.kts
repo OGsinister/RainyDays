@@ -15,5 +15,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "RainyDays"
 include(":app")
-include(":domain")
-include(":data")
+include(":core_network")
+include(":core_db")
+include(":core_data")
