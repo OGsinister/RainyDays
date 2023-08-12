@@ -1,7 +1,7 @@
 package com.example.core_data.mappers
 
 import com.example.core_data.model.Location
-import com.example.core_db.models.entities.LocationDb
+import com.example.core_db.models.LocationDb
 import com.example.core_network.model.current.CurrentWeather
 
 fun CurrentWeather.toLocation() = Location(

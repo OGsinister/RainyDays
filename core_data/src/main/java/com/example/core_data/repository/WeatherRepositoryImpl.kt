@@ -1,13 +1,18 @@
 package com.example.core_data.repository
 
+import com.example.core_data.mappers.ApiLocationToLocationData
+import com.example.core_data.mappers.ListLocationDbToLocationData
+import com.example.core_data.mappers.LocationDataToLocationDb
+import com.example.core_data.mappers.LocationDbToLocationData
 import com.example.core_data.mappers.toLocation
+import com.example.core_data.mappers.toLocationDb
 import com.example.core_data.model.Location
-import com.example.core_db.AppDatabase
-import com.example.core_db.models.dao.LocationDao
-import com.example.core_db.models.entities.LocationDb
+import com.example.core_db.dao.LocationDao
 import com.example.core_network.WeatherApi
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -16,11 +21,23 @@ class WeatherRepositoryImpl @Inject constructor(
     private val weatherApi: WeatherApi,
     private val dao: LocationDao,
 ): WeatherRepository{
+
     override suspend fun getCurrentWeatherByLocation(city: String): Location {
-        val locations = weatherApi.getCurrentWeatherByLocation(city)
-        return locations.toLocation()
+        val location = weatherApi.getCurrentWeatherByLocation(city)
+        return ApiLocationToLocationData().mapFrom(location)
     }
 
-    override suspend fun getAllLocation(): List<Location> =
-        dao.getAllLocations().map{ it.toLocation() }
+    override suspend fun getAllLocation(): List<Location> {
+        val locationData = dao.getAllLocations()
+        return ListLocationDbToLocationData().mapFrom(locationData)
+    }
+
+    override suspend fun getLocationById(id: Int): Location? {
+        val locationData = dao.getLocationById(id)
+        return locationData?.let { LocationDbToLocationData().mapFrom(it) }
+    }
+
+
+    /*override suspend fun getAllLocation(): List<Location> =
+        dao.getAllLocations().map{ it.toLocation() }*/
 }

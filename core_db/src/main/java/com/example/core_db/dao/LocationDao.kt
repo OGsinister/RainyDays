@@ -1,10 +1,10 @@
-package com.example.core_db.models.dao
+package com.example.core_db.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.core_db.models.entities.LocationDb
+import com.example.core_db.models.LocationDb
 
 @Dao
 interface LocationDao {

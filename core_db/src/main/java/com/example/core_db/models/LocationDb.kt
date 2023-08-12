@@ -1,4 +1,4 @@
-package com.example.core_db.models.entities
+package com.example.core_db.models
 
 import androidx.room.Entity
 import androidx.room.Index

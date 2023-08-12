@@ -2,8 +2,8 @@ package com.example.core_db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.core_db.models.dao.LocationDao
-import com.example.core_db.models.entities.LocationDb
+import com.example.core_db.dao.LocationDao
+import com.example.core_db.models.LocationDb
 
 @Database(
     entities = [LocationDb::class],
