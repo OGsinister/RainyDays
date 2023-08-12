@@ -1,7 +1,7 @@
 package com.example.core_data.repository
 
 import com.example.core_data.model.Location
-import kotlinx.coroutines.flow.Flow
+import com.example.core_db.models.LocationDb
 
 interface WeatherRepository {
     suspend fun getCurrentWeatherByLocation(city: String): Location
@@ -10,7 +10,10 @@ interface WeatherRepository {
 
     suspend fun getLocationById(id: Int): Location?
 
+    suspend fun addLocation(locationDb: LocationDb)
+
+    suspend fun deleteLocation(locationDb: LocationDb)
+
     // getForecast()
     // searchCity()
-    // CRUD
 }

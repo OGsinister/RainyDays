@@ -8,6 +8,7 @@ import com.example.core_data.mappers.toLocation
 import com.example.core_data.mappers.toLocationDb
 import com.example.core_data.model.Location
 import com.example.core_db.dao.LocationDao
+import com.example.core_db.models.LocationDb
 import com.example.core_network.WeatherApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -37,7 +38,11 @@ class WeatherRepositoryImpl @Inject constructor(
         return locationData?.let { LocationDbToLocationData().mapFrom(it) }
     }
 
+    override suspend fun addLocation(locationDb: LocationDb) {
+        return dao.addLocation(locationDb)
+    }
 
-    /*override suspend fun getAllLocation(): List<Location> =
-        dao.getAllLocations().map{ it.toLocation() }*/
+    override suspend fun deleteLocation(locationDb: LocationDb) {
+        return dao.deleteLocation(locationDb)
+    }
 }
