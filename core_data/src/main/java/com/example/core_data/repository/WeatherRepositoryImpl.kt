@@ -2,18 +2,11 @@ package com.example.core_data.repository
 
 import com.example.core_data.mappers.ApiLocationToLocationData
 import com.example.core_data.mappers.ListLocationDbToLocationData
-import com.example.core_data.mappers.LocationDataToLocationDb
 import com.example.core_data.mappers.LocationDbToLocationData
-import com.example.core_data.mappers.toLocation
-import com.example.core_data.mappers.toLocationDb
 import com.example.core_data.model.Location
 import com.example.core_db.dao.LocationDao
 import com.example.core_db.models.LocationDb
 import com.example.core_network.WeatherApi
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
 
