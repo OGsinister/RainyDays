@@ -5,15 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.rainydays.navigation.Screens
-import com.example.rainydays.ui.main_screen.MainViewModel
+import com.example.rainydays.ui.favorites_screen.FavoritesScreen
+import com.example.rainydays.ui.forecast_screen.ForecastScreen
+import com.example.rainydays.ui.main_screen.MainScreen
+import com.example.rainydays.ui.search_city_screen.SearchingScreen
 import com.example.rainydays.ui.theme.RainyDaysTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,16 +32,16 @@ class MainActivity : ComponentActivity() {
                         startDestination = Screens.MainScreen.route,
                     ){
                         composable(route = Screens.MainScreen.route){
-
+                            MainScreen()
                         }
                         composable(route = Screens.FavoritesScreen.route){
-
+                            FavoritesScreen()
                         }
                         composable(route = Screens.SearchScreen.route){
-
+                            SearchingScreen()
                         }
                         composable(route = Screens.ForecastScreen.route){
-
+                            ForecastScreen()
                         }
                     }
                 }
