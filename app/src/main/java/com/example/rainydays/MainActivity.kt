@@ -3,10 +3,15 @@ package com.example.rainydays
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -27,8 +32,20 @@ class MainActivity : ComponentActivity() {
             RainyDaysTheme {
                 val navController = rememberNavController()
                 Column(
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .systemBarsPadding()
                 ){
+                    Box(
+                        modifier = Modifier.fillMaxSize()
+                    ){
+                        Image(
+                            painterResource(randomWeather()),
+                            contentDescription = null,
+                            contentScale = ContentScale.FillHeight,
+                            modifier = Modifier.matchParentSize()
+                        )
+                    }
                     NavHost(
                         navController = navController,
                         startDestination = Screens.MainScreen.route,
@@ -53,9 +70,18 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
+fun randomWeather(): Int {
+    return listOf(
+        R.drawable.ic_snow_weather_background,
+        R.drawable.ic_sunny_weather_background,
+        R.drawable.ic_rain_weather_background
+    ).random()
+}
+
+@Composable
 @Preview(showBackground = true)
 fun DefaultPreview(){
     RainyDaysTheme {
-        MainScreen()
+        //MainScreen()
     }
 }
