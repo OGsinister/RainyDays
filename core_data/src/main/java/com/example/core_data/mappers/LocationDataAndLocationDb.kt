@@ -21,21 +21,6 @@ class LocationDataToLocationDb @Inject constructor(): Mapper<Location,LocationDb
 }
 
 class ListLocationDbToLocationData @Inject constructor(): Mapper<List<LocationDb>, List<Location>>(){
-    /* override fun mapFrom(from: LocationDb): List<Location> {
-        return listOf(
-            Location(
-                id = from.id,
-                cityName = from.cityName,
-                cloud = from.cloud,
-                conditionText = from.conditionText,
-                feelsLikeTemp = from.feelsLikeTemp,
-                humidity = from.humidity,
-                icon = from.icon,
-                temperature = from.temperature,
-                wind = from.wind
-            )
-        )
-    }*/
     override fun mapFrom(from: List<LocationDb>): List<Location> {
         return from.map {
             Location(
