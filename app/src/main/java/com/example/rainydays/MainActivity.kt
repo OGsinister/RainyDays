@@ -10,10 +10,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.rainydays.navigation.Screens
-import com.example.rainydays.ui.favorites_screen.FavoritesScreen
-import com.example.rainydays.ui.forecast_screen.ForecastScreen
-import com.example.rainydays.ui.main_screen.MainScreen
-import com.example.rainydays.ui.search_city_screen.SearchingScreen
+import com.example.rainydays.feature_favorite.ui.FavoritesScreen
+import com.example.rainydays.feature_forecast.ui.ForecastScreen
+import com.example.rainydays.feature_weather.ui.MainScreen
+import com.example.rainydays.feature_search_city.ui.SearchingScreen
 import com.example.rainydays.ui.theme.RainyDaysTheme
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface WeatherApi {
-    @GET(Constants.CURRENT+Constants.API_KEY + Constants.AQI)
+    @GET(Constants.CURRENT + Constants.API_KEY + Constants.AQI)
     suspend fun getCurrentWeatherByLocation(
         @Query("q") city: String
     ): CurrentWeather

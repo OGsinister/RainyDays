@@ -44,7 +44,4 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
-
-    // hilt
-    implementation("com.google.dagger:hilt-android:2.47")
 }
