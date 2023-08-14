@@ -3,12 +3,9 @@ package com.example.rainydays
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.systemBarsPadding
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
@@ -19,11 +16,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.core_data.model.Location
-import com.example.rainydays.navigation.Screens
 import com.example.rainydays.feature_favorite.ui.FavoritesScreen
 import com.example.rainydays.feature_forecast.ui.ForecastScreen
-import com.example.rainydays.feature_weather.ui.MainScreen
 import com.example.rainydays.feature_search_city.ui.SearchingScreen
+import com.example.rainydays.feature_weather.ui.MainScreen
+import com.example.rainydays.navigation.Screens
 import com.example.rainydays.ui.theme.RainyDaysTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -41,8 +38,8 @@ class MainActivity : ComponentActivity() {
                     conditionText = "Солнечно",
                     feelsLikeTemp = 32.0,
                     humidity = 1,
-                    icon = "R.drawable.ic_sunny_image",
-                    temperature = 31.0,
+                    icon = "R.drawable.c_sunny_image",
+                    temperature = -31.0,
                     wind = 2.0
                 )
                 Column(
