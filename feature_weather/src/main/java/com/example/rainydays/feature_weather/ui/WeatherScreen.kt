@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,10 +25,7 @@ fun MainScreen(location: Location) {
             .fillMaxSize()
             .padding(start = 40.dp, end = 40.dp)
     ){
-        Column(
-            modifier = Modifier
-                .weight(1f)
-        ) {
+        Column(modifier = Modifier.weight(1f)) {
 
         }
         Column(
@@ -54,8 +52,9 @@ fun CitySection(location: Location) {
         ){
             Text(
                 text = location.cityName,
-                fontSize = 50.sp,
-                color = mainColor
+                color = mainColor,
+                style = WeatherTypography.titleLarge
+                //fontSize = 50.sp,
             )
            /* Icon(
                 painter = painterResource(id = location.icon.toInt()),
@@ -69,16 +68,18 @@ fun CitySection(location: Location) {
         ){
             Text(
                 text = "${location.conditionText},",
-                fontSize = 15.sp,
-                color = mainColor
+                color = mainColor,
+                style = WeatherTypography.titleMedium
+                //fontSize = 15.sp,
             )
             Text(
                 text = "Ощущается как ${location.feelsLikeTemp.toInt()}",
-                fontSize = 15.sp,
-                color = mainColor
+                color = mainColor,
+                style = WeatherTypography.titleMedium
+                //fontSize = 15.sp,
             )
         }
-
+        Spacer(modifier = Modifier.padding(20.dp))
     }
 }
 @Composable
@@ -90,12 +91,13 @@ fun TemperatureSection(location: Location){
         Row{
             Text(
                 text = "${location.temperature.toInt()}",
-                fontSize = 120.sp,
-                color = mainColor
+                color = mainColor,
+                style = WeatherTypography.headlineLarge
+                //fontSize = 120.sp,
             )
             Text(
                 text = Symbols.celsius,
-                fontSize = 120.sp,
+                style = WeatherTypography.headlineLarge,
                 color = mainColor
             )
         }
@@ -112,47 +114,51 @@ fun MoreInfoSection(location: Location){
     ){
         Column(
             modifier = Modifier
-                .padding(2.dp)
+                .padding(2.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ){
             Text(
                 text = "Ветер",
                 color = bottomTextColor,
-                fontSize = 15.sp
+                style = WeatherTypography.titleMedium
+                //fontSize = 15.sp
             )
             Text(
                 text = "${location.wind} м/с",
-                color = mainColor,
-                fontSize = 15.sp
+                color = mainColor
             )
         }
         Column(
             modifier = Modifier
-                .padding(2.dp)
+                .padding(2.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ){
             Text(
                 text = "Влажность",
                 color = bottomTextColor,
-                fontSize = 15.sp
+                style = WeatherTypography.titleMedium
             )
             Text(
                 text = "${location.humidity} ${Symbols.percent}",
                 color = mainColor,
-                fontSize = 15.sp
             )
         }
         Column(
             modifier = Modifier
-                .padding(2.dp)
+                .padding(2.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ){
             Text(
-                text = "Облачность",
+                text = "Осадки",
                 color = bottomTextColor,
-                fontSize = 15.sp
+                style = WeatherTypography.titleMedium
             )
             Text(
                 text = "${location.cloud} ${Symbols.percent}",
-                color = mainColor,
-                fontSize = 15.sp
+                color = mainColor
             )
         }
     }

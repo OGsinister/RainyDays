@@ -1,0 +1,43 @@
+package com.example.rainydays.feature_weather.ui
+
+import androidx.compose.material3.Typography
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
+import com.example.feature_weather.R
+
+val fonts = FontFamily(
+    Font(R.font.pontiac_black),
+    Font(R.font.pontiac_bold, weight = FontWeight.Bold),
+    Font(R.font.pontiac_light, weight = FontWeight.Light),
+    Font(R.font.pontiac_regular, weight = FontWeight.Normal),
+    Font(R.font.pontiac_regular_italic, weight = FontWeight.Normal,
+        style = FontStyle.Italic
+   )
+)
+
+val WeatherTypography = Typography(
+    titleLarge = TextStyle(
+        fontFamily = fonts,
+        fontWeight = FontWeight.Bold,
+        fontSize = 50.sp
+    ),
+    titleMedium = TextStyle(
+        fontFamily = fonts,
+        fontWeight = FontWeight.Medium,
+        fontSize = 15.sp
+    ),
+    titleSmall = TextStyle(
+        fontFamily = fonts,
+        fontWeight = FontWeight.Thin,
+        fontSize = 5.sp
+    ),
+    headlineLarge = TextStyle(
+        fontFamily = fonts,
+        fontWeight = FontWeight.ExtraBold,
+        fontSize = 120.sp
+    )
+)
