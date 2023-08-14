@@ -1,4 +1,4 @@
-package com.example.core_network.model.current
+package com.example.core_network.model.forecast
 
 data class Location(
     val country: String,

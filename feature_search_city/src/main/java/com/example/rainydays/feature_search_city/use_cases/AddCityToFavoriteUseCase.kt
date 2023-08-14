@@ -1,8 +1,8 @@
 package com.example.rainydays.feature_search_city.use_cases
 
-import com.example.core_data.mappers.LocationDataToLocationDb
-import com.example.core_data.model.Location
-import com.example.core_data.repository.WeatherRepositoryImpl
+import com.example.core_data.domain.mappers.LocationDataToLocationDb
+import com.example.core_data.domain.model.Location
+import com.example.core_data.domain.repository.WeatherRepositoryImpl
 import javax.inject.Inject
 
 class AddCityToFavoriteUseCase @Inject constructor(

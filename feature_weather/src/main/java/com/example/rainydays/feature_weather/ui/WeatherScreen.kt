@@ -22,7 +22,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.example.core_data.model.Location
+import com.example.core_data.domain.model.Location
 import com.example.rainydays.feature_weather.utils.Symbols
 
 @Composable

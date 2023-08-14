@@ -1,6 +1,6 @@
-package com.example.core_data.repository
+package com.example.core_data.domain.repository
 
-import com.example.core_data.model.Location
+import com.example.core_data.domain.model.Location
 import com.example.core_db.models.LocationDb
 
 interface WeatherRepository {

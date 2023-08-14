@@ -1,6 +1,6 @@
 package com.example.rainydays.di
 
-import com.example.core_data.repository.WeatherRepository
+import com.example.core_data.domain.repository.WeatherRepository
 import com.example.core_network.Constants
 import com.example.core_network.WeatherApi
 import dagger.Binds

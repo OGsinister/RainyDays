@@ -6,4 +6,6 @@ object Constants {
     const val CURRENT = "current.json?"
     const val API_KEY = "key=abae908adcac4bd69b5193745230108"
     const val AQI = "&aqi=no"
+
+    const val DEFAULT_CITY_NAME = "Moscow"
 }

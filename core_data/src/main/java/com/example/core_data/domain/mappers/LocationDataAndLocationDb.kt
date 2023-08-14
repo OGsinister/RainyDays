@@ -1,13 +1,13 @@
-package com.example.core_data.mappers
+package com.example.core_data.domain.mappers
 
-import com.example.core_data.model.Location
+import com.example.core_data.domain.model.Location
 import com.example.core_db.models.LocationDb
 import javax.inject.Inject
 
-class LocationDataToLocationDb @Inject constructor(): Mapper<Location,LocationDb>() {
+class LocationDataToLocationDb @Inject constructor(): Mapper<Location, LocationDb>() {
     override fun mapFrom(from: Location): LocationDb {
         return LocationDb(
-            id = from.id,
+            id = from.id!!,
             cityName = from.cityName,
             cloud = from.cloud,
             conditionText = from.conditionText,

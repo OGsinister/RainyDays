@@ -1,10 +1,9 @@
-package com.example.core_data.repository
+package com.example.core_data.domain.repository
 
-import com.example.core_data.mappers.ApiLocationToLocationData
-import com.example.core_data.mappers.ListLocationDbToLocationData
-import com.example.core_data.mappers.LocationDataToLocationDb
-import com.example.core_data.mappers.LocationDbToLocationData
-import com.example.core_data.model.Location
+import com.example.core_data.domain.mappers.ApiLocationToLocationData
+import com.example.core_data.domain.mappers.ListLocationDbToLocationData
+import com.example.core_data.domain.mappers.LocationDbToLocationData
+import com.example.core_data.domain.model.Location
 import com.example.core_db.dao.LocationDao
 import com.example.core_db.models.LocationDb
 import com.example.core_network.WeatherApi
@@ -15,10 +14,10 @@ import javax.inject.Singleton
 class WeatherRepositoryImpl @Inject constructor(
     private val weatherApi: WeatherApi,
     private val dao: LocationDao,
-): WeatherRepository{
+): WeatherRepository {
     override suspend fun getCurrentWeatherByLocation(city: String): Location {
-        val location = weatherApi.getCurrentWeatherByLocation(city)
-        return ApiLocationToLocationData().mapFrom(location)
+        val currentWeather = weatherApi.getCurrentWeatherByLocation(city)
+        return ApiLocationToLocationData().mapFrom(currentWeather)
     }
 
     override suspend fun getAllLocation(): List<Location> {

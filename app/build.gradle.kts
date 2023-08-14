@@ -97,6 +97,9 @@ dependencies {
     implementation("androidx.room:room-ktx:2.5.2")
     annotationProcessor("androidx.room:room-compiler:2.5.2")
 
+    // Location android
+    implementation("com.google.android.gms:play-services-location:21.0.1")
+
     // Navigation
     val nav_version = "2.7.0"
 
