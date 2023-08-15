@@ -7,7 +7,7 @@ import javax.inject.Inject
 class ShowCurrentWeatherUseCase @Inject constructor(
     private val repository: WeatherRepositoryImpl
 ) {
-    suspend fun execute(city: String): Location {
-        return repository.getCurrentWeatherByLocation(city)
+    suspend fun execute(q: String, lang: String): Location {
+        return repository.getCurrentWeatherByLocation(q,lang)
     }
 }

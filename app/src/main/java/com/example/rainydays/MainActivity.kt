@@ -1,9 +1,7 @@
 package com.example.rainydays
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -17,8 +15,6 @@ import androidx.compose.ui.draw.paint
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.core.location.LocationManagerCompat.getCurrentLocation
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -30,19 +26,22 @@ import com.example.rainydays.feature_weather.ui.MainScreen
 import com.example.rainydays.feature_weather.utils.WeatherEvents
 import com.example.rainydays.navigation.Screens
 import com.example.rainydays.ui.theme.RainyDaysTheme
+import com.example.rainydays.utils.BackgroundImageManager
+import com.google.accompanist.systemuicontroller.SystemUiController
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
     private val viewModel: WeatherViewModel by viewModels()
+    private var systemUiController: SystemUiController? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         permissionLauncher = registerForActivityResult(
             ActivityResultContracts.RequestMultiplePermissions()
         ){
             viewModel.onEvent(WeatherEvents.GetWeather)
-            Log.d("lol","я тут был")
         }
         permissionLauncher.launch(arrayOf(
             android.Manifest.permission.ACCESS_FINE_LOCATION,
@@ -52,12 +51,15 @@ class MainActivity : ComponentActivity() {
         setContent {
             RainyDaysTheme {
                 val navController = rememberNavController()
+                systemUiController = rememberSystemUiController()
+                systemUiController?.isSystemBarsVisible = false
+
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
                         .systemBarsPadding()
                         .paint(
-                            painterResource(randomWeather()),
+                            painterResource(BackgroundImageManager(viewModel.location.conditionText)),
                             contentScale = ContentScale.FillHeight
                         )
                 ){
@@ -82,17 +84,12 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}
 
-@Composable
-fun randomWeather(): Int {
-    return listOf(
-        R.drawable.ic_snow_weather_background,
-        R.drawable.ic_sunny_weather_background,
-        R.drawable.ic_rain_weather_background
-    ).random()
+    override fun onResume() {
+        super.onResume()
+        systemUiController?.isSystemBarsVisible = false
+    }
 }
-
 @Composable
 @Preview(showBackground = true)
 fun DefaultPreview(){
