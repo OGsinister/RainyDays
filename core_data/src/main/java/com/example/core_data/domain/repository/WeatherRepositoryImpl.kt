@@ -15,8 +15,8 @@ class WeatherRepositoryImpl @Inject constructor(
     private val weatherApi: WeatherApi,
     private val dao: LocationDao,
 ): WeatherRepository {
-    override suspend fun getCurrentWeatherByLocation(city: String): Location {
-        val currentWeather = weatherApi.getCurrentWeatherByLocation(city)
+    override suspend fun getCurrentWeatherByLocation(q: String, lang: String): Location {
+        val currentWeather = weatherApi.getCurrentWeatherByLocation(q, lang)
         return ApiLocationToLocationData().mapFrom(currentWeather)
     }
 
