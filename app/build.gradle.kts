@@ -100,6 +100,9 @@ dependencies {
     // Location android
     implementation("com.google.android.gms:play-services-location:21.0.1")
 
+    // SystemUiController
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.33.0-alpha")
+
     // Navigation
     val nav_version = "2.7.0"
 
