@@ -6,7 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.core_data.domain.location.LocationTracker
+import com.example.core_data.utils.LocationTracker
 import com.example.core_data.domain.model.Location
 import com.example.core_network.utils.LangSwitcher
 import com.example.rainydays.feature_weather.use_cases.ShowCurrentWeatherUseCase
@@ -25,17 +25,19 @@ class WeatherViewModel @Inject constructor(
 
     var location by mutableStateOf(Location())
 
-    fun onEvent(event: WeatherEvents) = when(event){
-        is WeatherEvents.GetWeather -> {
-            viewModelScope.launch(Dispatchers.IO) {
-                locationTracker.getCurrentLocation().let{
-                    val result = showCurrentWeatherUseCase
-                        .execute(
-                                q = "${it?.latitude} ${it?.longitude}",
+    fun onEvent(event: WeatherEvents) {
+        when(event){
+            is WeatherEvents.GetWeatherFromApi -> {
+                viewModelScope.launch {
+                    locationTracker.getCurrentLocation()?.let{
+                        location = location.copy(
+                            errorMessage = null
+                        )
+                        val result = showCurrentWeatherUseCase
+                            .execute(
+                                q = "${it.latitude} ${it.longitude}",
                                 lang = LangSwitcher(Locale.getDefault())
                             )
-
-                    viewModelScope.launch(Dispatchers.Main) {
                         location = location.copy(
                             id = result.id,
                             cityName = result.cityName,
@@ -46,6 +48,10 @@ class WeatherViewModel @Inject constructor(
                             wind = result.wind,
                             humidity = result.humidity,
                             cloud = result.cloud
+                        )
+                    } ?: kotlin.run{
+                        location = location.copy(
+                            errorMessage = "Включите и разрешите использовать GPS"
                         )
                     }
                 }

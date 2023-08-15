@@ -1,8 +1,8 @@
 package com.example.rainydays.di
 
 import android.app.Application
-import com.example.core_data.domain.location.DefaultLocationTracker
-import com.example.core_data.domain.location.LocationTracker
+import com.example.core_data.utils.DefaultLocationTracker
+import com.example.core_data.utils.LocationTracker
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import dagger.Module

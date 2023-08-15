@@ -1,4 +1,4 @@
-package com.example.core_data.domain.location
+package com.example.core_data.utils
 
 import android.location.Location
 

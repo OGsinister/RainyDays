@@ -1,6 +1,7 @@
 package com.example.rainydays.feature_weather.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.Column
@@ -14,19 +15,28 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.core_data.domain.model.Location
+import com.example.core_data.utils.TranslateCity
+import com.example.core_data.utils.findIcon
+import com.example.rainydays.feature_weather.utils.Constants
 import com.example.rainydays.feature_weather.utils.Symbols
+import com.example.rainydays.navigation.Screens
+import kotlinx.coroutines.coroutineScope
 
 @Composable
-fun MainScreen(location: Location) {
+fun MainScreen(
+    location: Location,
+    navController: NavController
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -44,21 +54,18 @@ fun MainScreen(location: Location) {
                 modifier = Modifier
                     .clip(CircleShape)
                     .size(70.dp)
-                    .background(Color.White.copy(alpha = 0.15f)),
+                    .background(Color.White.copy(alpha = 0.15f))
+                    .clickable {
+                        navController.navigate(Screens.SearchScreen.route)
+                    },
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ){
-                IconButton(
-                    onClick = {
-
-                    }
-                ) {
-                    Icon(
-                        Icons.Default.Search,
-                        contentDescription = null,
-                        tint = Color.White
-                    )
-                }
+                Icon(
+                    Icons.Default.Search,
+                    contentDescription = null,
+                    tint = Color.White
+                )
             }
         }
         Column(
@@ -66,21 +73,9 @@ fun MainScreen(location: Location) {
                 .fillMaxWidth()
                 .weight(1f)
         ){
-            Column(
-                modifier = Modifier.fillMaxWidth()
-            ){
-                CitySection(location)
-            }
-            Column(
-                modifier = Modifier.fillMaxWidth()
-            ){
-                TemperatureSection(location)
-            }
-            Column(
-                modifier = Modifier.fillMaxWidth()
-            ){
-                MoreInfoSection(location)
-            }
+            CitySection(location)
+            TemperatureSection(location)
+            MoreInfoSection(location)
         }
     }
 }
@@ -92,17 +87,22 @@ fun CitySection(location: Location) {
             .fillMaxWidth()
     ){
         Text(
-            text = location.cityName,
+            text = TranslateCity(location.cityName),
             color = mainColor,
-            style = WeatherTypography.titleLarge,
+            style = if(location.cityName.length < 8)
+                         WeatherTypography.titleLarge
+                    else WeatherTypography.bodyMedium,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
-            //fontSize = 50.sp,
         )
-        /* Icon(
-             painter = painterResource(id = location.icon.toInt()),
-             contentDescription = null
-         )*/
+
+        Icon(
+            painter = painterResource(
+                id = findIcon(location.code)
+            ),
+            tint = Color.White,
+            contentDescription = null
+        )
     }
     Spacer(modifier = Modifier.padding(10.dp))
     Column(
@@ -115,15 +115,13 @@ fun CitySection(location: Location) {
             style = WeatherTypography.titleMedium,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
-            //fontSize = 15.sp,
         )
         Text(
-            text = "Ощущается как ${location.feelsLikeTemp.toInt()}",
+            text = "Ощущается как ${location.feelsLikeTemp.toInt()} ${Symbols.celsius}",
             color = mainColor,
             style = WeatherTypography.titleMedium,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
-            //fontSize = 15.sp,
         )
     }
 }
@@ -136,7 +134,6 @@ fun TemperatureSection(location: Location){
             style = WeatherTypography.headlineLarge,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
-            //fontSize = 120.sp,
         )
         Text(
             text = Symbols.celsius,
@@ -168,10 +165,9 @@ fun MoreInfoSection(location: Location){
                 style = WeatherTypography.titleMedium,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
-                //fontSize = 15.sp
             )
             Text(
-                text = "${location.wind} м/с",
+                text = "${location.wind.toInt()} м/с",
                 color = mainColor
             )
         }
@@ -200,7 +196,7 @@ fun MoreInfoSection(location: Location){
             horizontalAlignment = Alignment.CenterHorizontally
         ){
             Text(
-                text = "Осадки",
+                text = "Облачность",
                 color = bottomTextColor,
                 style = WeatherTypography.titleMedium,
                 maxLines = 1,

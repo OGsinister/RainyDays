@@ -2,6 +2,7 @@ package com.example.core_data.domain.model
 
 data class Location(
     val id: Int? = null,
+    val errorMessage: String? = null,
     val cityName: String = "",
     val code: Int = 374,
     val conditionText: String = "",

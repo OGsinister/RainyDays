@@ -1,4 +1,4 @@
-package com.example.core_data.domain.location
+package com.example.core_data.utils
 
 import android.Manifest
 import android.app.Application
@@ -11,21 +11,18 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.suspendCancellableCoroutine
 import javax.inject.Inject
-import kotlin.coroutines.cancellation.CancellationException
 import kotlin.coroutines.resume
 
 class DefaultLocationTracker @Inject constructor(
     private val locationClient: FusedLocationProviderClient,
     private val application: Application
-): LocationTracker{
-    @OptIn(ExperimentalCoroutinesApi::class)
+): LocationTracker {
     override suspend fun getCurrentLocation(): Location? {
-        val hasFinePermission = ContextCompat.checkSelfPermission(
+        val hasAccessFineLocationPermission = ContextCompat.checkSelfPermission(
             application,
             Manifest.permission.ACCESS_FINE_LOCATION
         ) == PackageManager.PERMISSION_GRANTED
-
-        val hasCoarsePermission = ContextCompat.checkSelfPermission(
+        val hasAccessCoarseLocationPermission = ContextCompat.checkSelfPermission(
             application,
             Manifest.permission.ACCESS_COARSE_LOCATION
         ) == PackageManager.PERMISSION_GRANTED
@@ -33,21 +30,21 @@ class DefaultLocationTracker @Inject constructor(
         val locationManager = application.getSystemService(Context.LOCATION_SERVICE) as LocationManager
         val isGpsEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER) ||
                 locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
-
-        if(!hasFinePermission && !hasCoarsePermission && !isGpsEnabled){
+        if(!hasAccessCoarseLocationPermission || !hasAccessFineLocationPermission || !isGpsEnabled) {
             return null
         }
+
         return suspendCancellableCoroutine { cont ->
             locationClient.lastLocation.apply {
                 if(isComplete) {
-                    if(isSuccessful){
+                    if(isSuccessful) {
                         cont.resume(result)
-                    }else {
+                    } else {
                         cont.resume(null)
                     }
                     return@suspendCancellableCoroutine
                 }
-                addOnSuccessListener{
+                addOnSuccessListener {
                     cont.resume(it)
                 }
                 addOnFailureListener {
