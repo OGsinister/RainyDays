@@ -60,6 +60,7 @@ dependencies {
     implementation("androidx.compose.ui:ui:1.5.0")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
+    implementation("androidx.compose.material:material:1.5.0")
     implementation("androidx.compose.material3:material3:1.1.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -103,8 +104,9 @@ dependencies {
     // SystemUiController
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.33.0-alpha")
 
-    // Navigation
-    val nav_version = "2.7.0"
+    // Icons
+    implementation("androidx.compose.material:material-icons-extended:1.5.0")
 
-    implementation("androidx.navigation:navigation-compose:$nav_version")
+    // Navigation
+    implementation("androidx.navigation:navigation-compose:2.7.0")
 }

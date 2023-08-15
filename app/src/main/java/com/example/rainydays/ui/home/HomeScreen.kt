@@ -1,7 +1,8 @@
-package com.example.rainydays.feature_weather.ui
+package com.example.rainydays.ui.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.Column
@@ -12,8 +13,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.rememberSwipeableState
+import androidx.compose.material.swipeable
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
@@ -27,13 +31,16 @@ import androidx.navigation.NavController
 import com.example.core_data.domain.model.Location
 import com.example.core_data.utils.TranslateCity
 import com.example.core_data.utils.findIcon
-import com.example.rainydays.feature_weather.utils.Constants
+import com.example.rainydays.feature_weather.ui.WeatherTypography
+import com.example.rainydays.feature_weather.ui.bottomTextColor
+import com.example.rainydays.feature_weather.ui.mainColor
 import com.example.rainydays.feature_weather.utils.Symbols
 import com.example.rainydays.navigation.Screens
-import kotlinx.coroutines.coroutineScope
+import com.example.rainydays.utils.SwipeState
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun MainScreen(
+fun HomeScreen(
     location: Location,
     navController: NavController
 ) {
