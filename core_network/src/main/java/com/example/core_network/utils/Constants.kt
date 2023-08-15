@@ -1,4 +1,4 @@
-package com.example.core_network
+package com.example.core_network.utils
 
 object Constants {
     const val BASE_URL = "https://api.weatherapi.com/v1/"
@@ -6,6 +6,4 @@ object Constants {
     const val CURRENT = "current.json?"
     const val API_KEY = "key=abae908adcac4bd69b5193745230108"
     const val AQI = "&aqi=no"
-
-    const val DEFAULT_CITY_NAME = "Moscow"
 }

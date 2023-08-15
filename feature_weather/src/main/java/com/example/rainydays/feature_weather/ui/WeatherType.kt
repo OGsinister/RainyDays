@@ -35,5 +35,10 @@ val WeatherTypography = Typography(
         fontFamily = fonts,
         fontWeight = FontWeight.ExtraBold,
         fontSize = 110.sp
+    ),
+    bodyMedium = TextStyle(
+        fontFamily = fonts,
+        fontWeight = FontWeight.Bold,
+        fontSize = 35.sp
     )
 )

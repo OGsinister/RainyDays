@@ -11,7 +11,7 @@ import androidx.room.PrimaryKey
 data class LocationDb(
     @PrimaryKey(autoGenerate = true) val id: Int,
     val cityName: String,
-    val icon: String,
+    val code: Int,
     val conditionText: String,
     val feelsLikeTemp: Double,
     val temperature: Double,

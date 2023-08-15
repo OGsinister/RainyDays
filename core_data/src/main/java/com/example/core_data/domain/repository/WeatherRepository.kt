@@ -4,7 +4,7 @@ import com.example.core_data.domain.model.Location
 import com.example.core_db.models.LocationDb
 
 interface WeatherRepository {
-    suspend fun getCurrentWeatherByLocation(city: String): Location
+    suspend fun getCurrentWeatherByLocation(q: String, lang: String): Location
 
     suspend fun getAllLocation(): List<Location>
 

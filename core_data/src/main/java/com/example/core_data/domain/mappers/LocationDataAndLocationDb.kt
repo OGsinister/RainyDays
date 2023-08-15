@@ -13,7 +13,7 @@ class LocationDataToLocationDb @Inject constructor(): Mapper<Location, LocationD
             conditionText = from.conditionText,
             feelsLikeTemp = from.feelsLikeTemp,
             humidity = from.humidity,
-            icon = from.icon,
+            code = from.code,
             temperature = from.temperature,
             wind = from.wind
         )
@@ -30,7 +30,7 @@ class ListLocationDbToLocationData @Inject constructor(): Mapper<List<LocationDb
                 conditionText = it.conditionText,
                 feelsLikeTemp = it.feelsLikeTemp,
                 humidity = it.humidity,
-                icon = it.icon,
+                code = it.code,
                 temperature = it.temperature,
                 wind = it.wind
             )
@@ -48,7 +48,7 @@ class LocationDbToLocationData @Inject constructor(): Mapper<LocationDb, Locatio
             conditionText = from.conditionText,
             feelsLikeTemp = from.feelsLikeTemp,
             humidity = from.humidity,
-            icon = from.icon,
+            code = from.code,
             temperature = from.temperature,
             wind = from.wind
         )

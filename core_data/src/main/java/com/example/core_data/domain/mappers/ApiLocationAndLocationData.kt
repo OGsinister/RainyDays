@@ -13,7 +13,7 @@ class ApiLocationToLocationData @Inject constructor(): Mapper<CurrentWeather, Lo
             conditionText = from.current.condition.text,
             feelsLikeTemp = from.current.feelsLikeTemp,
             humidity = from.current.humidity,
-            icon = from.current.condition.icon,
+            code = from.current.condition.code,
             temperature = from.current.temperature,
             wind = from.current.wind
         )
