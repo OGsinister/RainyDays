@@ -1,6 +1,6 @@
 package com.example.rainydays.di
 
-import com.example.core_network.utils.Constants
+import com.example.core_network.utils.ApiEndPoints
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,7 +18,7 @@ object NetworkModule {
     @Singleton
     fun provideRetrofit() =
         Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
+            .baseUrl(ApiEndPoints.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

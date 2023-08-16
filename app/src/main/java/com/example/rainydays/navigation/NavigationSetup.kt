@@ -5,7 +5,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.rainydays.feature_favorite.ui.FavoritesScreen
-import com.example.rainydays.feature_forecast.ui.ForecastScreen
+import com.example.rainydays.feature_forecast.ForecastViewModel
+import com.example.rainydays.ui.forecast.ForecastScreen
 import com.example.rainydays.feature_search_city.ui.SearchingScreen
 import com.example.rainydays.feature_weather.WeatherViewModel
 import com.example.rainydays.ui.home.HomeScreen
@@ -13,7 +14,8 @@ import com.example.rainydays.ui.home.HomeScreen
 @Composable
 fun NavigationSetup(
     navController: NavHostController,
-    weatherViewModel: WeatherViewModel
+    weatherViewModel: WeatherViewModel,
+    forecastViewModel: ForecastViewModel
 ){
     NavHost(
         navController = navController,
@@ -29,7 +31,9 @@ fun NavigationSetup(
             SearchingScreen(navController)
         }
         composable(route = Screens.ForecastScreen.route){
-            ForecastScreen()
+            ForecastScreen(
+                forecast = forecastViewModel.forecastLocation
+            )
         }
     }
 }

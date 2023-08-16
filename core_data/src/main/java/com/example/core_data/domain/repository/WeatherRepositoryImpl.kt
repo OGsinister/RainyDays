@@ -1,8 +1,10 @@
 package com.example.core_data.domain.repository
 
-import com.example.core_data.domain.mappers.ApiLocationToLocationData
+import com.example.core_data.domain.mappers.CurrentWeatherToLocationData
+import com.example.core_data.domain.mappers.ForecastWeatherToLocationData
 import com.example.core_data.domain.mappers.ListLocationDbToLocationData
 import com.example.core_data.domain.mappers.LocationDbToLocationData
+import com.example.core_data.domain.model.Forecast
 import com.example.core_data.domain.model.Location
 import com.example.core_db.dao.LocationDao
 import com.example.core_db.models.LocationDb
@@ -17,7 +19,12 @@ class WeatherRepositoryImpl @Inject constructor(
 ): WeatherRepository {
     override suspend fun getCurrentWeatherByLocation(q: String, lang: String): Location {
         val currentWeather = weatherApi.getCurrentWeatherByLocation(q, lang)
-        return ApiLocationToLocationData().mapFrom(currentWeather)
+        return CurrentWeatherToLocationData().mapFrom(currentWeather)
+    }
+
+    override suspend fun getForecastWeatherByLocation(q: String, lang: String): Forecast {
+        val currentWeather = weatherApi.getForecastWeatherByLocation(q, lang)
+        return ForecastWeatherToLocationData().mapFrom(currentWeather)
     }
 
     override suspend fun getAllLocation(): List<Location> {

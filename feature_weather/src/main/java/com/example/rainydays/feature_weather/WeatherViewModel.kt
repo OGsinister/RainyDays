@@ -12,7 +12,6 @@ import com.example.core_network.utils.LangSwitcher
 import com.example.rainydays.feature_weather.use_cases.ShowCurrentWeatherUseCase
 import com.example.rainydays.feature_weather.utils.WeatherEvents
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.Locale
 import javax.inject.Inject
