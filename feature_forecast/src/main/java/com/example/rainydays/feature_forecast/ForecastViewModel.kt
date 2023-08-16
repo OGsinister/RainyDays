@@ -6,6 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.core_data.domain.model.Forecast
+import com.example.core_data.utils.LocationTracker
 import com.example.core_network.utils.LangSwitcher
 import com.example.rainydays.feature_forecast.use_cases.GetForecastUseCase
 import com.example.rainydays.feature_forecast.utils.ForecastEvents
@@ -16,7 +17,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ForecastViewModel @Inject constructor(
-    private val getForecastUseCase: GetForecastUseCase
+    private val getForecastUseCase: GetForecastUseCase,
+    private val locationTracker: LocationTracker
 ): ViewModel(){
 
     var forecastLocation by mutableStateOf(Forecast())
@@ -24,23 +26,25 @@ class ForecastViewModel @Inject constructor(
         when(event){
             is ForecastEvents.GetForecastFromApi -> {
                 viewModelScope.launch {
-                    val result = getForecastUseCase
-                        .execute(
-                            q = "Moscow",
-                            lang = LangSwitcher(Locale.getDefault())
-                        )
+                    locationTracker.getCurrentLocation()?.let {
+                        val result = getForecastUseCase
+                            .execute(
+                                q = "${it.latitude} ${it.longitude}",
+                                lang = LangSwitcher(Locale.getDefault())
+                            )
 
-                    forecastLocation = forecastLocation.copy(
-                        cityName = result.cityName,
-                        code = result.code,
-                        conditionText = result.conditionText,
-                        feelsLikeTemp = result.feelsLikeTemp,
-                        wind = result.wind,
-                        humidity = result.humidity,
-                        cloud = result.cloud,
-                        forecast = result.forecast,
-                        temperature = result.temperature
-                    )
+                        forecastLocation = forecastLocation.copy(
+                            cityName = result.cityName,
+                            code = result.code,
+                            conditionText = result.conditionText,
+                            feelsLikeTemp = result.feelsLikeTemp,
+                            wind = result.wind,
+                            humidity = result.humidity,
+                            cloud = result.cloud,
+                            forecast = result.forecast,
+                            temperature = result.temperature
+                        )
+                    }
                 }
             }
         }
