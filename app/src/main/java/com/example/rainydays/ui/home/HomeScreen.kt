@@ -1,5 +1,6 @@
 package com.example.rainydays.ui.home
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -83,6 +84,7 @@ fun HomeScreen(
 
 @Composable
 fun CitySection(location: Location) {
+    Log.d("check Icon code",location.code.toString())
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -96,7 +98,7 @@ fun CitySection(location: Location) {
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
-
+        Spacer(modifier = Modifier.padding(5.dp))
         Icon(
             painter = painterResource(
                 id = findIcon(location.code)
