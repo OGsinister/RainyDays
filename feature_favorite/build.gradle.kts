@@ -48,6 +48,7 @@ dependencies {
     implementation("androidx.compose.ui:ui:1.5.0")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
+    implementation("androidx.compose.material:material:1.5.0")
     implementation("androidx.compose.material3:material3:1.1.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -64,5 +65,7 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
     implementation(project(":core_data"))
-    implementation(project((":core_db")))
+    implementation(project(":core_db"))
+    implementation(project(":feature_search_city"))
+    implementation(project(":feature_weather"))
 }
