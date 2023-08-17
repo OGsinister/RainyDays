@@ -15,7 +15,6 @@ data class FavoriteLocationDb(
     val idFav: Int,
     val cityName: String,
     val temperature: Double,
-    val icon: String,
-    val isFavorite: Boolean,
+    val code: Int,
     val isCurrentLocation: Boolean,
 )

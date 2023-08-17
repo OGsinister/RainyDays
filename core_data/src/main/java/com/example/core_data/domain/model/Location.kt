@@ -1,7 +1,6 @@
 package com.example.core_data.domain.model
 
 data class Location(
-    val id: Int? = null,
     val errorMessage: String? = null,
     val cityName: String = "",
     val code: Int = 374,
@@ -11,4 +10,5 @@ data class Location(
     val wind: Double = 0.0,
     val humidity: Int = 1,
     val cloud: Int = 1,
+    val isCurrentLocation: Boolean = false
 )

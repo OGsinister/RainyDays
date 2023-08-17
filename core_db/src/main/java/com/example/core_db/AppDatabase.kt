@@ -4,10 +4,9 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.example.core_db.dao.LocationDao
 import com.example.core_db.models.FavoriteLocationDb
-import com.example.core_db.models.LocationDb
 
 @Database(
-    entities = [LocationDb::class,FavoriteLocationDb::class],
+    entities = [FavoriteLocationDb::class],
     version = 1,
     exportSchema = false
 )
