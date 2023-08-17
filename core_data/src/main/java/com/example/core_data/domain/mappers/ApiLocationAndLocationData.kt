@@ -9,7 +9,6 @@ import javax.inject.Inject
 class CurrentWeatherToLocationData @Inject constructor(): Mapper<CurrentWeather, Location>(){
     override fun mapFrom(from: CurrentWeather): Location {
         return Location(
-            id = from.id,
             cityName = from.location.name,
             cloud = from.current.cloud,
             conditionText = from.current.condition.text,
@@ -17,7 +16,7 @@ class CurrentWeatherToLocationData @Inject constructor(): Mapper<CurrentWeather,
             humidity = from.current.humidity,
             code = from.current.condition.code,
             temperature = from.current.temperature,
-            wind = from.current.wind
+            wind = from.current.wind,
         )
     }
 }

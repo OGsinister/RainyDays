@@ -8,6 +8,6 @@ class ShowCurrentWeatherUseCase @Inject constructor(
     private val repository: WeatherRepositoryImpl
 ) {
     suspend fun execute(q: String, lang: String): Location {
-        return repository.getCurrentWeatherByLocation(q,lang)
+        return repository.getCurrentWeatherByLocation(q, lang)
     }
 }

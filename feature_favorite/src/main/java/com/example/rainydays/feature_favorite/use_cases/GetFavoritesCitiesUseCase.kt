@@ -7,7 +7,7 @@ import javax.inject.Inject
 class GetFavoritesCitiesUseCase @Inject constructor(
     private val repository: WeatherRepositoryImpl
 ){
-    suspend fun execute(): List<Location>{
-       return repository.getAllLocation()
+    suspend fun execute(): List<Location> {
+       return repository.getAllFavorites()
     }
 }
