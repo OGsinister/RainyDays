@@ -151,16 +151,11 @@ fun CurrentWeatherSection(forecast: Forecast){
 }
 
 @Composable
-fun ForecastSection(hours: List<Hour>){ //hours: List<Forecastday>
+fun ForecastSection(hours: List<Hour>){
     Column(
         modifier = Modifier
             .fillMaxWidth()
     ) {
-        // Row for graph
-        Row {
-
-        }
-        // Row for items
         Row(
             modifier = Modifier
                 .fillMaxWidth(),
@@ -175,6 +170,44 @@ fun ForecastSection(hours: List<Hour>){ //hours: List<Forecastday>
         }
     }
 }
+
+/*@Composable
+fun TemperatureGraph(
+    graphData: List<Hour>
+){
+    Box(
+        modifier = Modifier
+            .background(Color.Transparent)
+            .fillMaxWidth()
+    ){
+        Spacer(
+            modifier = Modifier
+                .padding(1.dp)
+                .aspectRatio(3 / 1f)
+                .fillMaxWidth()
+                .drawBehind {
+                    val path = generatePath(graphData,size)
+                    drawPath(
+                        path = path,
+                        color = Color.Green,
+                        style = Stroke(width = 5f)
+                    )
+                }
+        )
+    }
+}*/
+
+/*fun generatePath(data: List<Hour>, size: Size): Path {
+    val path = Path()
+
+    data.forEachIndexed { index, d ->
+        val x = d.time.substringAfter(" ").replace(":",".").toFloat()
+        val y = d.temp_c.toFloat()
+        path.lineTo(x,y)
+    }
+    return path
+}*/
+
 @Composable
 fun MoreInfoSection(forecast: Forecast){
     Row(
