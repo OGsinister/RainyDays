@@ -19,6 +19,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.compose.rememberNavController
+import com.example.rainydays.feature_favorite.FavoriteCitiesViewModel
 import com.example.rainydays.feature_forecast.ForecastViewModel
 import com.example.rainydays.feature_forecast.utils.ForecastEvents
 import com.example.rainydays.feature_weather.WeatherViewModel
@@ -38,6 +39,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
     private val weatherViewModel: WeatherViewModel by viewModels()
     private val forecastViewModel: ForecastViewModel by viewModels()
+    private val favoriteCitiesViewModel: FavoriteCitiesViewModel by viewModels()
     private var systemUiController: SystemUiController? = null
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +54,7 @@ class MainActivity : ComponentActivity() {
             android.Manifest.permission.ACCESS_FINE_LOCATION,
             android.Manifest.permission.ACCESS_COARSE_LOCATION
         ))
+
         setContent {
             RainyDaysTheme {
                 val navController = rememberNavController()
@@ -100,7 +103,8 @@ class MainActivity : ComponentActivity() {
                             NavigationSetup(
                                 navController = navController,
                                 weatherViewModel = weatherViewModel,
-                                forecastViewModel = forecastViewModel
+                                forecastViewModel = forecastViewModel,
+                                favoriteCitiesViewModel = favoriteCitiesViewModel
                             )
                         }
                     }

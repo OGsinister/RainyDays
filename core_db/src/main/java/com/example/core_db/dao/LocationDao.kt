@@ -5,19 +5,20 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.core_db.models.LocationDb
+import com.example.core_db.models.FavoriteLocationDb
 
 @Dao
 interface LocationDao {
-    @Query("SELECT * FROM Location")
-    suspend fun getAllLocations(): List<LocationDb>
 
-    @Query("SELECT * FROM Location WHERE id = :id")
-    suspend fun getLocationById(id: Int): LocationDb?
+    @Query("SELECT * FROM Favorite")
+    suspend fun getAllFavorites(): List<FavoriteLocationDb>
+
+    @Query("SELECT * FROM Favorite WHERE id_fav = :id")
+    suspend fun getFavoriteLocationById(id: Int): FavoriteLocationDb?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addLocation(locationDb: LocationDb)
+    suspend fun addToFavorite(locationDb: FavoriteLocationDb)
 
     @Delete
-    suspend fun deleteLocation(locationDb: LocationDb)
+    suspend fun deleteLocation(locationDb: FavoriteLocationDb)
 }
