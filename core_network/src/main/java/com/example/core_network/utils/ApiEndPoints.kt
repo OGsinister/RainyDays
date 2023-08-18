@@ -6,6 +6,7 @@ object ApiEndPoints {
     const val DAYS = "&days=1"
     const val CURRENT = "current.json?"
     const val API_KEY = "key=abae908adcac4bd69b5193745230108"
+    const val SEARCH = "search.json?"
     const val AQI = "&aqi=no"
     const val ALERTS = "&alerts=no"
 }

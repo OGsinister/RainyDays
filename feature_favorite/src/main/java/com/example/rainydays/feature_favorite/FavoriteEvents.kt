@@ -4,4 +4,5 @@ sealed class FavoriteEvents{
     object AddCity: FavoriteEvents()
     object DeleteCity: FavoriteEvents()
     object GetAllCities: FavoriteEvents()
+    class SearchingCity(val query: String): FavoriteEvents()
 }

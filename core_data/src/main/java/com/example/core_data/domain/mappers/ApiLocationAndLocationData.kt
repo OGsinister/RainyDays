@@ -2,8 +2,12 @@ package com.example.core_data.domain.mappers
 
 import com.example.core_data.domain.model.Forecast
 import com.example.core_data.domain.model.Location
+import com.example.core_data.domain.model.SearchLocation
 import com.example.core_network.model.current.CurrentWeather
 import com.example.core_network.model.forecast.ForecastWeather
+import com.example.core_network.model.search.SearchWeather
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
 
 class CurrentWeatherToLocationData @Inject constructor(): Mapper<CurrentWeather, Location>(){
@@ -34,5 +38,19 @@ class ForecastWeatherToLocationData @Inject constructor(): Mapper<ForecastWeathe
             temperature = from.current.temp_c,
             humidity = from.current.humidity,
         )
+    }
+}
+
+class SearchWeatherToSearchLocation @Inject constructor(
+): Mapper<SearchWeather, List<SearchLocation>>(){
+    override fun mapFrom(from: SearchWeather): List<SearchLocation> {
+        return from.mapIndexed { _, searchWeatherItem ->
+            SearchLocation(
+                id = searchWeatherItem.id,
+                country = searchWeatherItem.country,
+                location = searchWeatherItem.name,
+                region = searchWeatherItem.region
+            )
+        }
     }
 }

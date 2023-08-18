@@ -1,6 +1,7 @@
 package com.example.rainydays.feature_favorite.ui
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,12 +26,12 @@ fun FavoritesScreen(
     weatherViewModel: WeatherViewModel
 ) {
     val searchText by viewModel.searchText.collectAsState()
-    val isSearching by viewModel.isSearching.collectAsState()
+
 
     weatherViewModel.onEvent(WeatherEvents.AddBaseCityToDb)
     viewModel.onEvent(FavoriteEvents.GetAllCities)
 
-    val cityList = viewModel.cityList
+    val cityList = viewModel.favoritesCities
 
     Column(
         modifier = Modifier
@@ -47,8 +48,7 @@ fun FavoritesScreen(
             FavoriteTextField(
                 modifier = Modifier,
                 viewModel = viewModel,
-                searchText = searchText,
-                isSearching = isSearching
+                searchText = searchText
             )
         }
 
