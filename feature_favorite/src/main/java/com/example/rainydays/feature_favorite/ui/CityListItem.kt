@@ -20,9 +20,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.core_data.domain.model.Location
-import com.example.core_data.utils.findIcon
-import com.example.rainydays.feature_weather.ui.WeatherTypography
-import com.example.rainydays.feature_weather.utils.Symbols
+import com.example.core_ui.Symbols
+import com.example.core_ui.WeatherTypography
+import com.example.core_ui.findIcon
 
 @Composable
 fun CityListItem(city: Location) {

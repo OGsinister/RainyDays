@@ -57,7 +57,8 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
-    implementation(project(":feature_search_city"))
+    implementation(project(":feature_favorite"))
+    implementation(project(":core_ui"))
 
     // Hilt
     implementation("com.google.dagger:hilt-android:2.47")

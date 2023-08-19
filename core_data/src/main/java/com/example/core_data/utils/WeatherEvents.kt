@@ -1,4 +1,4 @@
-package com.example.rainydays.feature_weather.utils
+package com.example.core_data.utils
 
 sealed class WeatherEvents{
     object GetWeatherFromApi: WeatherEvents()

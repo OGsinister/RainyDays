@@ -1,6 +1,5 @@
-package com.example.rainydays.ui.home
+package com.example.rainydays.feature_weather.ui
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -26,13 +25,10 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.core_data.domain.model.Location
-import com.example.core_data.utils.TranslateCity
-import com.example.core_data.utils.findIcon
-import com.example.rainydays.feature_weather.ui.WeatherTypography
-import com.example.rainydays.feature_weather.ui.bottomTextColor
-import com.example.rainydays.feature_weather.ui.mainColor
-import com.example.rainydays.feature_weather.utils.Symbols
-import com.example.rainydays.navigation.Screens
+import com.example.core_ui.TranslateCity
+import com.example.core_ui.screens.Screens
+import com.example.rainydays.ui.bottomTextColor
+import com.example.rainydays.ui.mainColor
 
 @Composable
 fun HomeScreen(
@@ -84,7 +80,6 @@ fun HomeScreen(
 
 @Composable
 fun CitySection(location: Location) {
-    Log.d("check Icon code",location.code.toString())
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -93,15 +88,15 @@ fun CitySection(location: Location) {
             text = TranslateCity(location.cityName),
             color = mainColor,
             style = if(location.cityName.length < 8)
-                         WeatherTypography.titleLarge
-                    else WeatherTypography.bodyMedium,
+                         com.example.core_ui.WeatherTypography.titleLarge
+                    else com.example.core_ui.WeatherTypography.bodyMedium,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
         Spacer(modifier = Modifier.padding(5.dp))
         Icon(
             painter = painterResource(
-                id = findIcon(location.code)
+                id = com.example.core_ui.findIcon(location.code)
             ),
             tint = Color.White,
             contentDescription = null
@@ -115,14 +110,14 @@ fun CitySection(location: Location) {
         Text(
             text = "${location.conditionText},",
             color = mainColor,
-            style = WeatherTypography.titleMedium,
+            style = com.example.core_ui.WeatherTypography.titleMedium,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
         Text(
-            text = "Ощущается как ${location.feelsLikeTemp.toInt()} ${Symbols.celsius}",
+            text = "Ощущается как ${location.feelsLikeTemp.toInt()} ${com.example.core_ui.Symbols.celsius}",
             color = mainColor,
-            style = WeatherTypography.titleMedium,
+            style = com.example.core_ui.WeatherTypography.titleMedium,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
@@ -134,13 +129,13 @@ fun TemperatureSection(location: Location){
         Text(
             text = "${location.temperature.toInt()}",
             color = mainColor,
-            style = WeatherTypography.headlineLarge,
+            style = com.example.core_ui.WeatherTypography.headlineLarge,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
         Text(
-            text = Symbols.celsius,
-            style = WeatherTypography.headlineLarge,
+            text = com.example.core_ui.Symbols.celsius,
+            style = com.example.core_ui.WeatherTypography.headlineLarge,
             color = mainColor,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
@@ -165,7 +160,7 @@ fun MoreInfoSection(location: Location){
             Text(
                 text = "Ветер",
                 color = bottomTextColor,
-                style = WeatherTypography.titleMedium,
+                style = com.example.core_ui.WeatherTypography.titleMedium,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
@@ -183,12 +178,12 @@ fun MoreInfoSection(location: Location){
             Text(
                 text = "Влажность",
                 color = bottomTextColor,
-                style = WeatherTypography.titleMedium,
+                style = com.example.core_ui.WeatherTypography.titleMedium,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
             Text(
-                text = "${location.humidity} ${Symbols.percent}",
+                text = "${location.humidity} ${com.example.core_ui.Symbols.percent}",
                 color = mainColor,
             )
         }
@@ -201,12 +196,12 @@ fun MoreInfoSection(location: Location){
             Text(
                 text = "Облачность",
                 color = bottomTextColor,
-                style = WeatherTypography.titleMedium,
+                style = com.example.core_ui.WeatherTypography.titleMedium,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
             Text(
-                text = "${location.cloud} ${Symbols.percent}",
+                text = "${location.cloud} ${com.example.core_ui.Symbols.percent}",
                 color = mainColor
             )
         }

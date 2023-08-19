@@ -1,4 +1,4 @@
-package com.example.rainydays.ui.forecast
+package com.example.rainydays.feature_forecast.ui
 
 import ForecastTypography
 import androidx.compose.foundation.background
@@ -27,13 +27,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.core_data.domain.model.Forecast
-import com.example.core_data.utils.TranslateCity
-import com.example.core_data.utils.findIcon
 import com.example.core_network.model.forecast.Hour
-import com.example.rainydays.feature_forecast.ui.ForecastItem
-import com.example.rainydays.feature_weather.ui.bottomTextColor
-import com.example.rainydays.feature_weather.ui.mainColor
-import com.example.rainydays.feature_weather.utils.Symbols
+import com.example.core_ui.TranslateCity
+import com.example.rainydays.ui.bottomTextColor
+import com.example.rainydays.ui.mainColor
 
 @Composable
 fun ForecastScreen(
@@ -105,7 +102,7 @@ fun CurrentWeatherSection(forecast: Forecast){
 
         Icon(
             painter = painterResource(
-                id = findIcon(forecast.code)
+                id = com.example.core_ui.findIcon(forecast.code)
             ),
             tint = Color.White,
             contentDescription = null
@@ -124,7 +121,7 @@ fun CurrentWeatherSection(forecast: Forecast){
             overflow = TextOverflow.Ellipsis
         )
         Text(
-            text = "Ощущается как ${forecast.feelsLikeTemp.toInt()} ${Symbols.celsius}",
+            text = "Ощущается как ${forecast.feelsLikeTemp.toInt()} ${com.example.core_ui.Symbols.celsius}",
             color = mainColor,
             style = ForecastTypography.titleMedium,
             maxLines = 1,
@@ -141,7 +138,7 @@ fun CurrentWeatherSection(forecast: Forecast){
             overflow = TextOverflow.Ellipsis
         )
         Text(
-            text = Symbols.celsius,
+            text = com.example.core_ui.Symbols.celsius,
             style = ForecastTypography.headlineLarge,
             color = mainColor,
             maxLines = 1,
@@ -248,7 +245,7 @@ fun MoreInfoSection(forecast: Forecast){
                 overflow = TextOverflow.Ellipsis
             )
             Text(
-                text = "${forecast.humidity} ${Symbols.percent}",
+                text = "${forecast.humidity} ${com.example.core_ui.Symbols.percent}",
                 color = mainColor,
             )
         }
@@ -266,7 +263,7 @@ fun MoreInfoSection(forecast: Forecast){
                 overflow = TextOverflow.Ellipsis
             )
             Text(
-                text = "${forecast.cloud} ${Symbols.percent}",
+                text = "${forecast.cloud} ${com.example.core_ui.Symbols.percent}",
                 color = mainColor
             )
         }

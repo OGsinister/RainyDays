@@ -4,7 +4,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.example.feature_weather.R
+import com.example.core_ui.R
 
 val fonts = FontFamily(
     Font(R.font.pontiac_black),

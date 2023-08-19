@@ -1,4 +1,4 @@
-package com.example.rainydays.feature_weather.utils
+package com.example.core_ui
 
 /**
  * Reference - https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references

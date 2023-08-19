@@ -1,4 +1,4 @@
-package com.example.core_data.utils
+package com.example.core_ui
 
 val cityMap = mapOf(
     "Nizhnevartovsk" to "Нижневартовск",

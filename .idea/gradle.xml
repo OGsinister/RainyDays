@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/core_data" />
             <option value="$PROJECT_DIR$/core_db" />
             <option value="$PROJECT_DIR$/core_network" />
+            <option value="$PROJECT_DIR$/core_ui" />
             <option value="$PROJECT_DIR$/feature_favorite" />
             <option value="$PROJECT_DIR$/feature_forecast" />
             <option value="$PROJECT_DIR$/feature_search_city" />

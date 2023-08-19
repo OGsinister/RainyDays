@@ -75,7 +75,7 @@ dependencies {
     implementation(project(":core_db"))
     implementation(project(":feature_favorite"))
     implementation(project(":feature_forecast"))
-    implementation(project(":feature_search_city"))
+    implementation(project(":core_ui"))
     implementation(project(":feature_weather"))
 
     // Hilt

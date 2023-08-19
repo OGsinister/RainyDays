@@ -5,13 +5,13 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.core_ui.screens.Screens
 import com.example.rainydays.feature_favorite.FavoriteCitiesViewModel
 import com.example.rainydays.feature_favorite.ui.FavoritesScreen
 import com.example.rainydays.feature_forecast.ForecastViewModel
-import com.example.rainydays.ui.forecast.ForecastScreen
-import com.example.rainydays.feature_search_city.ui.SearchingScreen
+import com.example.rainydays.feature_forecast.ui.ForecastScreen
 import com.example.rainydays.feature_weather.WeatherViewModel
-import com.example.rainydays.ui.home.HomeScreen
+import com.example.rainydays.feature_weather.ui.HomeScreen
 
 @SuppressLint("CommitPrefEdits")
 @Composable
@@ -33,12 +33,8 @@ fun NavigationSetup(
         }
         composable(route = Screens.FavoritesScreen.route){
             FavoritesScreen(
-                viewModel = favoriteCitiesViewModel,
-                weatherViewModel = weatherViewModel
+                viewModel = favoriteCitiesViewModel
             )
-        }
-        composable(route = Screens.SearchScreen.route){
-            SearchingScreen(navController)
         }
         composable(route = Screens.ForecastScreen.route){
             ForecastScreen(

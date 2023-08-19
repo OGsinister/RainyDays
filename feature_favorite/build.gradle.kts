@@ -66,6 +66,5 @@ dependencies {
 
     implementation(project(":core_data"))
     implementation(project(":core_db"))
-    implementation(project(":feature_search_city"))
-    implementation(project(":feature_weather"))
+    implementation(project(":core_ui"))
 }
