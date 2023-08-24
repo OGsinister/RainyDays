@@ -11,6 +11,7 @@ import com.example.core_network.utils.LangSwitcher
 import com.example.rainydays.feature_forecast.use_cases.GetForecastUseCase
 import com.example.rainydays.feature_forecast.utils.ForecastEvents
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.Locale
 import javax.inject.Inject
@@ -22,10 +23,11 @@ class ForecastViewModel @Inject constructor(
 ): ViewModel(){
 
     var forecastLocation by mutableStateOf(Forecast())
+
     fun onEvent(event: ForecastEvents){
         when(event){
             is ForecastEvents.GetForecastFromApi -> {
-                viewModelScope.launch {
+                viewModelScope.launch(Dispatchers.IO) {
                     locationTracker.getCurrentLocation()?.let {
                         val result = getForecastUseCase
                             .execute(

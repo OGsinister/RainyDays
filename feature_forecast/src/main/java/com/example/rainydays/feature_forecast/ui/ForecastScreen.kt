@@ -26,15 +26,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.core_data.domain.model.Forecast
 import com.example.core_network.model.forecast.Hour
 import com.example.core_ui.TranslateCity
+import com.example.core_ui.screens.Screens
 import com.example.rainydays.ui.bottomTextColor
 import com.example.rainydays.ui.mainColor
 
 @Composable
 fun ForecastScreen(
-    forecast: Forecast
+    forecast: Forecast,
+    navController: NavController
 ) {
     val flattenList = forecast.forecast?.map{it.hour}
     Column(
@@ -49,7 +52,7 @@ fun ForecastScreen(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.End
         ){
-            SearchSection()
+            SearchSection(navController = navController)
         }
         Column(
             modifier = Modifier
@@ -64,14 +67,16 @@ fun ForecastScreen(
     }
 }
 @Composable
-fun SearchSection(){
+fun SearchSection(
+    navController: NavController
+){
     Column(
         modifier = Modifier
             .clip(CircleShape)
             .size(70.dp)
             .background(Color.White.copy(alpha = 0.15f))
             .clickable {
-                //navController.navigate(Screens.SearchScreen.route)
+                navController.navigate(Screens.FavoritesScreen.route)
             },
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -167,43 +172,6 @@ fun ForecastSection(hours: List<Hour>){
         }
     }
 }
-
-/*@Composable
-fun TemperatureGraph(
-    graphData: List<Hour>
-){
-    Box(
-        modifier = Modifier
-            .background(Color.Transparent)
-            .fillMaxWidth()
-    ){
-        Spacer(
-            modifier = Modifier
-                .padding(1.dp)
-                .aspectRatio(3 / 1f)
-                .fillMaxWidth()
-                .drawBehind {
-                    val path = generatePath(graphData,size)
-                    drawPath(
-                        path = path,
-                        color = Color.Green,
-                        style = Stroke(width = 5f)
-                    )
-                }
-        )
-    }
-}*/
-
-/*fun generatePath(data: List<Hour>, size: Size): Path {
-    val path = Path()
-
-    data.forEachIndexed { index, d ->
-        val x = d.time.substringAfter(" ").replace(":",".").toFloat()
-        val y = d.temp_c.toFloat()
-        path.lineTo(x,y)
-    }
-    return path
-}*/
 
 @Composable
 fun MoreInfoSection(forecast: Forecast){
