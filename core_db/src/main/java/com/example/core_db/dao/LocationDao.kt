@@ -13,8 +13,8 @@ interface LocationDao {
     @Query("SELECT * FROM Favorite")
     suspend fun getAllFavorites(): List<FavoriteLocationDb>
 
-    @Query("SELECT * FROM Favorite WHERE id_fav = :id")
-    suspend fun getFavoriteLocationById(id: Int): FavoriteLocationDb?
+    @Query("SELECT * FROM Favorite WHERE cityName = :name")
+    suspend fun getFavoriteLocationByName(name: String): FavoriteLocationDb?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addToFavorite(locationDb: FavoriteLocationDb)

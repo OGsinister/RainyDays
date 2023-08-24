@@ -27,18 +27,21 @@ fun NavigationSetup(
     ){
         composable(route = Screens.HomeScreen.route){
             HomeScreen(
-                weatherViewModel.location,
-                navController
+                location = weatherViewModel.location,
+                navController = navController,
+                viewModel = weatherViewModel
             )
         }
         composable(route = Screens.FavoritesScreen.route){
             FavoritesScreen(
-                viewModel = favoriteCitiesViewModel
+                viewModel = favoriteCitiesViewModel,
+                navController = navController
             )
         }
         composable(route = Screens.ForecastScreen.route){
             ForecastScreen(
-                forecast = forecastViewModel.forecastLocation
+                forecast = forecastViewModel.forecastLocation,
+                navController = navController
             )
         }
     }

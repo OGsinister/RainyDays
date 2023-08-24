@@ -6,8 +6,6 @@ import com.example.core_data.domain.model.SearchLocation
 import com.example.core_network.model.current.CurrentWeather
 import com.example.core_network.model.forecast.ForecastWeather
 import com.example.core_network.model.search.SearchWeather
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
 
 class CurrentWeatherToLocationData @Inject constructor(): Mapper<CurrentWeather, Location>(){

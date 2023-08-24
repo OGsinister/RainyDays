@@ -10,5 +10,5 @@ data class Location(
     val wind: Double = 0.0,
     val humidity: Int = 1,
     val cloud: Int = 1,
-    val isCurrentLocation: Boolean = false
+    val isCurrentLocation: Boolean = false,
 )
