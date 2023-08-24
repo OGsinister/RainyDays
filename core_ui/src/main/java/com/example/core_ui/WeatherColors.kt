@@ -4,4 +4,3 @@ import androidx.compose.ui.graphics.Color
 
 val mainColor = Color(0xFFf5f5f5)
 val bottomTextColor = Color(0XFF7d7e7e)
-val searchTextFieldColor = Color(0XFF663d3b)

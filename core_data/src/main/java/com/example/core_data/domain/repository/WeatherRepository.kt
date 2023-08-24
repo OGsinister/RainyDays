@@ -4,8 +4,6 @@ import com.example.core_data.domain.model.Forecast
 import com.example.core_data.domain.model.Location
 import com.example.core_data.domain.model.SearchLocation
 import com.example.core_db.models.FavoriteLocationDb
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
 
 interface WeatherRepository {
     suspend fun getCurrentWeatherByLocation(q: String, lang: String): Location
@@ -16,7 +14,7 @@ interface WeatherRepository {
 
     suspend fun getAllFavorites(): List<Location>
 
-    suspend fun getLocationById(id: Int): Location?
+    suspend fun getLocationByName(name: String): Location?
 
     suspend fun addToFavorite(favoritesDb: Location)
 
