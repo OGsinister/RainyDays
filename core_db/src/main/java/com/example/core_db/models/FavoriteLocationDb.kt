@@ -1,18 +1,15 @@
 package com.example.core_db.models
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
 
 @Entity(
     tableName = "Favorite",
-    indices = [Index("id_fav")]
+    indices = [Index("cityName", unique = true)]
 )
 data class FavoriteLocationDb(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo("id_fav")
-    val idFav: Int,
+    @PrimaryKey
     val cityName: String,
     val temperature: Double,
     val code: Int,

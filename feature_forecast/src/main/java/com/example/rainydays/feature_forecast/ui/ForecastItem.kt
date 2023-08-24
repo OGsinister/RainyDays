@@ -12,7 +12,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.core_network.model.forecast.Hour
+import com.example.core_ui.Symbols
 import com.example.rainydays.ui.bottomTextColor
+import com.example.rainydays.ui.mainColor
 
 @Composable
 fun ForecastItem(hour: Hour){
@@ -41,8 +43,8 @@ fun ForecastItem(hour: Hour){
             horizontalAlignment = Alignment.CenterHorizontally
         ){
             Text(
-                text = "${hour.temp_c.toInt()}${com.example.core_ui.Symbols.celsius}",
-                color = com.example.rainydays.ui.mainColor,
+                text = "${hour.temp_c.toInt()}${Symbols.celsius}",
+                color = mainColor,
                 style = ForecastTypography.bodyLarge
             )
         }

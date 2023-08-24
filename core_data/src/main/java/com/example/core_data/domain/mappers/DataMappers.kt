@@ -7,7 +7,6 @@ import javax.inject.Inject
 class LocationDataToFavoritesDb @Inject constructor(): Mapper<Location, FavoriteLocationDb>() {
     override fun mapFrom(from: Location): FavoriteLocationDb {
         return FavoriteLocationDb(
-            idFav = 1,
             temperature = from.temperature,
             cityName = from.cityName,
             code = from.code,
@@ -24,7 +23,6 @@ fun FavoriteLocationDb.toLocationData() = Location(
 )
 
 fun Location.toFavoriteLocationDb() = FavoriteLocationDb(
-    idFav = 1,
     cityName = cityName,
     temperature = temperature,
     code = code,

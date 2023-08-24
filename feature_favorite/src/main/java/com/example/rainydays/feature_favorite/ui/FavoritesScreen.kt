@@ -1,7 +1,6 @@
 package com.example.rainydays.feature_favorite.ui
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,24 +13,21 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.rainydays.feature_favorite.FavoriteCitiesViewModel
 import com.example.rainydays.feature_favorite.FavoriteEvents
-import com.example.rainydays.feature_weather.WeatherViewModel
-import com.example.rainydays.feature_weather.utils.WeatherEvents
 
 @SuppressLint("StateFlowValueCalledInComposition")
 @Composable
 fun FavoritesScreen(
     viewModel: FavoriteCitiesViewModel,
-    weatherViewModel: WeatherViewModel
+    navController: NavHostController
 ) {
     val searchText by viewModel.searchText.collectAsState()
 
-
-    weatherViewModel.onEvent(WeatherEvents.AddBaseCityToDb)
     viewModel.onEvent(FavoriteEvents.GetAllCities)
 
-    val cityList = viewModel.favoritesCities
+    val cityList = viewModel.favoritesCities.collectAsState()
 
     Column(
         modifier = Modifier
@@ -40,15 +36,15 @@ fun FavoritesScreen(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 40.dp, end = 40.dp)
+                .padding(start = 25.dp, end = 25.dp)
                 .weight(1f),
             verticalArrangement = Arrangement.Bottom,
             horizontalAlignment = Alignment.CenterHorizontally
         ){
             FavoriteTextField(
-                modifier = Modifier,
                 viewModel = viewModel,
-                searchText = searchText
+                searchText = searchText,
+                navController = navController
             )
         }
 
@@ -58,10 +54,17 @@ fun FavoritesScreen(
                 .weight(3f)
         ){
             LazyColumn{
-                items(cityList){ city ->
+                items(cityList.value){ city ->
                     CityListItem(city = city)
                 }
             }
+        }
+
+        Column(
+            modifier = Modifier
+                .weight(1f)
+        ) {
+
         }
     }
 }
