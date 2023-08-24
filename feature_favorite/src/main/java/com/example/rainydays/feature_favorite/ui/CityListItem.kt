@@ -1,6 +1,7 @@
 package com.example.rainydays.feature_favorite.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -41,6 +42,9 @@ fun CityListItem(city: Location) {
                     )
                 )
             )
+            .clickable {
+                /// ((((
+            }
     ){
         Column(
             modifier = Modifier
@@ -79,6 +83,12 @@ fun CityListItem(city: Location) {
                     text = "${city.temperature.toInt()}${Symbols.celsius}",
                     style = WeatherTypography.titleLarge
                 )
+                if(city.isCurrentLocation){
+                    Text(
+                        text = "Текущее\nместоположение",
+                        style = WeatherTypography.titleMedium
+                    )
+                }
             }
         }
     }
