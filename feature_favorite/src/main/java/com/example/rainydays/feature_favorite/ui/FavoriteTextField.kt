@@ -51,6 +51,7 @@ fun FavoriteTextField(
                 tint = bottomTextColor
             )
         },
+
         colors = TextFieldDefaults.colors(
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
@@ -58,9 +59,12 @@ fun FavoriteTextField(
             focusedContainerColor = Color.Transparent.copy(alpha = 0.7f),
             unfocusedContainerColor = Color.Transparent.copy(alpha = 0.7f)
         ),
+
+
+
+
         shape = RoundedCornerShape(30.dp)
     )
-
     if(searchText.isNotBlank()){
         LazyColumn(
             modifier = Modifier
