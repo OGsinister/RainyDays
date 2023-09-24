@@ -59,10 +59,6 @@ fun FavoriteTextField(
             focusedContainerColor = Color.Transparent.copy(alpha = 0.7f),
             unfocusedContainerColor = Color.Transparent.copy(alpha = 0.7f)
         ),
-
-
-
-
         shape = RoundedCornerShape(30.dp)
     )
     if(searchText.isNotBlank()){
